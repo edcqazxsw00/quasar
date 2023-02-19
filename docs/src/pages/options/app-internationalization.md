@@ -37,7 +37,8 @@ import messages from 'src/i18n'
 export default ({ app }) => {
   // Create I18n instance
   const i18n = createI18n({
-    locale: 'en-US',
+    legacy: false,
+    locale: 'en-US',//'fa-IR'
     globalInjection: true,
     messages
   })
@@ -72,9 +73,9 @@ If we want to add support to the `<i18n>` tag inside a SFC (single file componen
 We first install the `@intlify/vue-i18n-loader` package:
 
 ``` bash
-$ yarn add --dev @intlify/vue-i18n-loader
+$ yarn add --dev vue-i18n@next
 # or
-$ npm i --save-dev @intlify/vue-i18n-loader
+$ npm i --save vue-i18n@next
 ```
 
 We then edit `quasar.config.js` at the root of our project. We have to include the following:
@@ -141,9 +142,11 @@ Let's say you want to add new German language.
 
 ```js
 import enUS from './en-US'
+import enUS from './fa-IR'
 import de from './de'
 
 export default {
+  'fa-IR': faIR,
   'en-US': enUS,
   'de': de
 }
@@ -181,6 +184,7 @@ export default {
       locale,
       localeOptions: [
         { value: 'en-US', label: 'English' },
+        { value: 'fa-IR', label: 'Persian' },
         { value: 'de', label: 'German' }
       ]
     }
